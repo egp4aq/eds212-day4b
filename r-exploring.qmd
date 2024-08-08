@@ -1,0 +1,40 @@
+---
+title: "Day 4 afternoon session"
+author: "Liz Peterson"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# load libraries ----
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(tidyverse)
+
+# check out the column names ----
+names(penguins)
+
+# look at the dimensions of the data frame ----
+dim(penguins)
+
+# get a summary of your data frame ----
+summary(penguins)
+
+# get a summary using {skimr} ----
+skimr::skim(penguins)
+
+# head & tail
+head(penguins) # prints out first 6 rows, by default. update n to get a diff. number of rows
+tail(penguins) # prints out last 6 rows
+
+# pairsplot ----
+GGally::ggpairs(penguins, columns = 3:6, 
+                ggplot2::aes(color = species))
+
+# create histogram of penguin flipper length ----
+ggplot(data = penguins, aes(x = flipper_length_mm, fill = species)) +
+  geom_histogram()
+```
+
